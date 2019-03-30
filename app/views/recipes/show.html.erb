@@ -1,0 +1,79 @@
+<% provide(:title, @recipe.name) %>
+<div class="row">
+<div class="col-md-offset-10" style="width: 700px;">
+    <h2>How to make: <%= @recipe.name %></h2>
+    <% if @recipe.url.present? %>
+        <%= image_tag(@recipe.url, :height => "400px") %>
+    <% end %>
+    <br>
+    
+    <% if @recipe.time.present? %>
+    <h4 align="center">
+    <b><%= @recipe.time %>
+        <% if @recipe.servings.present? %>
+            , <%= @recipe.servings %> servings
+            <% if @recipe.calories.present? %>
+                , <%= @recipe.calories %> cals. 
+            <% end %>
+        <% end %>
+    </b>
+    </h4>
+    <% end %>
+
+    <% if logged_in? %>
+    <h3> <%= link_to like_recipe_path(@recipe), method: :put do %>
+        Upvote<%=image_tag("/default/like.png", :height => "35px", :width => "35px")%>
+        <%= @recipe.get_upvotes.size %> 
+    <% end %>
+    <p> <%= link_to dislike_recipe_path(@recipe), method: :put do %>
+        Downvote<%=image_tag("/default/dislike.png", :height => "35px", :width => "35px")%>
+        <%= @recipe.get_downvotes.size %> </h3>
+    <% end %>
+    <% end %>
+
+    <h3>Created by:  
+    <% user = get_name(@recipe.created_by) %>
+    <%= link_to user, :controller => "users", :action => "show", :id => @recipe.created_by %>
+    </h3>
+    <h3>Description:</h3>
+    <p><i><%= @recipe.description %></i></p>
+    <h3>Category: <%= @recipe.category %></h3>
+
+    <h3>Ingredients required</h3>
+    <% if @recipe.ing1.present? %>
+    <ul class="list-group">
+    <li class="list-group-item"><%= @recipe.ing1 %></li>
+    <% if @recipe.ing2.present? %>
+        <li class="list-group-item"><%= @recipe.ing2 %></li>
+    <% end %>
+    <% if @recipe.ing3.present? %>
+        <li class="list-group-item"><%= @recipe.ing3 %></li>
+    <% end %>
+    <% if @recipe.ing4.present? %>
+        <li class="list-group-item"><%= @recipe.ing4 %></li>
+    <% end %>
+    <% if @recipe.ing5.present? %>
+        <li class="list-group-item"><%= @recipe.ing5 %></li>
+    <% end %>
+    </ul>
+    <% end %>
+
+    <% if @recipe.ins1.present? %>
+        <h3>Instructions to follow</h3>
+        <ul class="list-group" style="width: 700px;">
+        <li class="list-group-item"><p class="numberCircle">1 <p> <%= @recipe.ins1 %> </p> </p></li>
+    <% if @recipe.ins2.present? %>
+        <li class="list-group-item"><p class="numberCircle">2 <p> <%= @recipe.ins2 %> </p> </p></li>
+    <% end %>
+    <% if @recipe.ins3.present? %>
+        <li class="list-group-item"><p class="numberCircle">3 <p> <%= @recipe.ins3 %></p></p></li>
+    <% end %>
+    <% if @recipe.ins4.present? %>
+    <li class="list-group-item"><p class="numberCircle">4 <p> <%= @recipe.ins4 %></p></p></li>
+    <% end %>
+    <% if @recipe.ins5.present? %>
+    <li class="list-group-item"><p class="numberCircle">5 <p> <%= @recipe.ins5 %></p></p></li>
+    <% end %>
+    <% end %>
+</div>
+</div>

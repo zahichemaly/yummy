@@ -1,0 +1,42 @@
+<script>
+$(document).ready(function() {
+    $('#list').click(function(event){event.preventDefault();$('#products .item').addClass('list-group-item');});
+    $('#grid').click(function(event){event.preventDefault();$('#products .item').removeClass('list-group-item');$('#products .item').addClass('grid-group-item');});
+});
+</script>
+
+<div class="container" style="width: 800px;">
+        <div class="well well-sm">
+            <strong style="color: BLACK;">Display</strong>
+            <div class="btn-group">
+                <a href="#" id="list" class="btn btn-default btn-sm">
+                    <span class="glyphicon glyphicon-th-list">
+                    </span>List</a>
+                <a href="#" id="grid" class="btn btn-default btn-sm">
+                    <span class="glyphicon glyphicon-th"></span>Grid</a>
+            </div>
+        </div>
+
+        <% @recipes.each do |recipe| %>
+        <div id="products" class="row list-group" style="width: 800px;">
+            <div class="item  col-xs-4 col-lg-4">
+                <div class="thumbnail">
+                <h5><%= link_to "Edit", :controller => "recipes", :action => "edit",:id => recipe.id %>   
+                <%= link_to "Delete", recipe, method: :delete, data: {confirm: "Are you sure?"} %></h5>
+                    <%= image_tag(recipe.url, :height => "400px", :width => "250px", :class => "group list-group-image") %>
+                    <div class="caption">
+                        <h4 class="group inner list-group-item-heading">
+                            <%= link_to recipe.name, :controller => "recipes", :action => "show", :id => recipe.id %> </h4>
+                        <p class="group inner list-group-item-text">
+                            <%= recipe.description %>
+                        </p>
+                        <p> <%=image_tag("/default/like.png", :height => "25px", :width => "25px")%>
+                        <%= recipe.get_upvotes.size %> </p>
+                        <p> <%=image_tag("/default/dislike.png", :height => "25px", :width => "25px")%>
+                        <%= recipe.get_downvotes.size %> </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <% end %>
+    </div>

@@ -1,0 +1,69 @@
+<% provide(:title, 'Create Recipe') %>
+<div class="row">
+  <div class="col-md-12 col-md-offset-3">
+  <h1>Create a recipe</h1>
+    <%= form_for(@recipe) do |f| %>
+
+      <%= f.label :name, "Name of Recipe*"  %>
+      <%= f.text_field :name, class: 'form-control' %>
+
+      <%= f.label :description, "Description*" %>
+      <%= f.text_field :description, class: 'form-control' %>
+
+      <%= f.label :category, "Category*" %>
+      <%= f.text_field :category, class: 'form-control' %>
+
+      <%= f.label :url, "URL" %>
+      <%= f.text_field :url, class: 'form-control' %>
+
+      <%= f.label :time, "Time" %>
+      <%= f.text_field :time, class: 'form-control' %>
+
+      <%= f.label :servings, "Servings" %>
+      <%= f.text_field :servings, class: 'form-control' %>
+
+      <%= f.label :calories, "Calories" %>
+      <%= f.text_field :calories, class: 'form-control' %>
+
+      <h3> List of required ingredients</h3>
+      <%= f.label :ing1, "Ingredient 1" %>
+      <%= f.text_field :ing1, class: 'form-control' %>
+
+      <%= f.label :ing2, "Ingredient 2" %>
+      <%= f.text_field :ing2, class: 'form-control' %>
+
+      <%= f.label :ing3, "Ingredient 3" %>
+      <%= f.text_field :ing3, class: 'form-control' %>
+
+      <%= f.label :ing4, "Ingredient 4" %>
+      <%= f.text_field :ing4, class: 'form-control' %>
+
+      <%= f.label :ing5, "Ingredient 5" %>
+      <%= f.text_field :ing5, class: 'form-control' %>
+
+      <h3> List of instructions (in order)</h3>
+      <%= f.label :ins1, "Instruction #1" %>
+      <%= f.text_field :ins1, class: 'form-control' %>
+
+      <%= f.label :ins2, "Instruction #2" %>
+      <%= f.text_field :ins2, class: 'form-control' %>
+
+      <%= f.label :ins3, "Instruction #3" %>
+      <%= f.text_field :ins3, class: 'form-control' %>
+
+      <%= f.label :ins4, "Instruction #4" %>
+      <%= f.text_field :ins4, class: 'form-control' %>
+
+      <%= f.label :ins5, "Instruction #5" %>
+      <%= f.text_field :ins5, class: 'form-control' %>
+
+      <h5 style="color: RED;"><i> * Fields required </i></h5>
+
+      <% if logged_in? %>
+        <% user = current_user %>
+        <%= f.hidden_field :created_by, value: user.id  %>
+      <% end %>
+      <%= f.submit "Create new recipe", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
