@@ -27,24 +27,24 @@ Installation
 
 **1) Install dependencies via command line, inside the project directory**
 
-	`bundle install`
+	bundle install
 
 **2) Uninstall all bycrypt versions (if you installed them previously)
 
-	`gem uninstall bcrypt`
+	gem uninstall bcrypt
 
 **3) Install bcrypt for Ruby**
 
-	`gem install bcrypt --platform=ruby`
+	gem install bcrypt --platform=ruby
 
 **4) Open the SQL console and create a database. Name it:** `yummy_development`
 
 **5) Open a new command line inside the `bin\` directory and type:**
 
-	`rails db:migrate RAILS_ENV=development`
+	rails db:migrate RAILS_ENV=development
 
 **6) Return to the fist command line and launch the server:**
 
-	`rails server`
+	rails server
 
 **7) Open http://localhost:3000/signup and create a new profile**
