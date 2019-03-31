@@ -29,7 +29,7 @@ Installation
 
 	bundle install
 
-**2) Uninstall all bycrypt versions (if you installed them previously)
+**2) Uninstall all bycrypt versions (if you installed them previously)**
 
 	gem uninstall bcrypt
 
